@@ -1,4 +1,7 @@
-﻿using Biblioteca.Infra.AcessoADados.Repositorio;
+﻿using Biblioteca.Aplicacao.Autores;
+using Biblioteca.Aplicacao.Livros;
+using Biblioteca.Aplicacao.Livros.Consulta;
+using Biblioteca.Infra.AcessoADados.Repositorio;
 using Biblioteca.Infra.Log.AlteracaoDeEntidade;
 using Biblioteca.Infra.Log.LogsGerais;
 using Microsoft.Extensions.Configuration;
@@ -16,6 +19,9 @@ namespace Biblioteca.API.ConfiguracoesDeInicializacao
             services.AddScoped<LogsDeAlteracaoDeEntidade>();
             services.AddScoped<LogadorDeAlteracaoDeEntidade>();
             services.AddScoped<IInterceptor, LogInterceptor>();
+            services.AddScoped<ILivroRepositorio, LivroRepositorio>();
+            services.AddScoped<IAutorRepositorio, AutorRepositorio>();
+            services.AddScoped<IConsultaDeLivros, ConsultaDeLivros>();
         }
     }
 }

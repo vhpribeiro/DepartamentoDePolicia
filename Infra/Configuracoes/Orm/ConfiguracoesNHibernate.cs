@@ -35,13 +35,13 @@ namespace Biblioteca.Infra.Configuracoes.Orm
                 .CurrentSessionContext<WebSessionContext>()
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<LogDeAlteracaoDeEntidadeMap>()
                     .Conventions.Add<PrimaryKeyConvention>()
-                    .Conventions.Add<EnumConvention>()
+                    //.Conventions.Add<EnumConvention>()
                     .Conventions.Add<CustomForeignKeyConvention>())
-                .ExposeConfiguration(config =>
-                {
-                    config.SetProperty(Environment.CacheDefaultExpiration, TempoDeExpiracaoDoCache);
-                    new SchemaExport(config).Create(exibirSql, criarBanco);
-                })
+                //.ExposeConfiguration(config =>
+                //{
+                //    config.SetProperty(Environment.CacheDefaultExpiration, TempoDeExpiracaoDoCache);
+                //    new SchemaExport(config).Create(exibirSql, criarBanco);
+                //})
                 .BuildSessionFactory();
         }
     }

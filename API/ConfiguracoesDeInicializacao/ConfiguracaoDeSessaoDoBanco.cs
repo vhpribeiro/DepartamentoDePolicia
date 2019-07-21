@@ -12,8 +12,6 @@ namespace Biblioteca.API.ConfiguracoesDeInicializacao
         {
             services.AddScoped(provider => ConfiguracoesNHibernate
                 .ConfigurarSessionFactory(configuration["Data:DefaultConnection:ConnectionString"])
-                .WithOptions()
-                .Interceptor(provider.GetService<IInterceptor>())
                 .OpenSession());
             services.AddScoped<UnitOfWorkFilter>();
         }

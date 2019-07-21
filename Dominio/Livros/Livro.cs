@@ -45,7 +45,7 @@ namespace Biblioteca.Dominio.Livros
             QuantidadeDisponivel = QuantidadeDisponivel + quantidadeQueDeveSerAlterada;
         }
 
-        public void PegarEmprestado(int quantidadeDeLivrosParaSeremEmprestados)
+        public virtual void PegarEmprestado(int quantidadeDeLivrosParaSeremEmprestados)
         {
             Validacao<Livro>.Quando(QuantidadeDisponivel < quantidadeDeLivrosParaSeremEmprestados,
                 "Não há tantos livros assim! Diminua a quantidade por favor");
