@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca.Aplicacao", "Apl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aplicacao", "Aplicacao", "{E0B6EA46-7173-43ED-A9FB-01DF0AAB39C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca.Infra.Migrations", "Infra.Migrations\Biblioteca.Infra.Migrations.csproj", "{4DA3A138-E57E-4EE2-A3C7-E1C2AFE155E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca.Infra.Migrations", "Infra.Migrations\Biblioteca.Infra.Migrations.csproj", "{4DA3A138-E57E-4EE2-A3C7-E1C2AFE155E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +72,7 @@ Global
 		{BC1AF5DA-E95B-4F65-8C3D-3A5B01A5443E} = {31DF00D8-B8D2-4C01-86D0-2E06F35644BE}
 		{3F8F629D-F746-4F7F-8CCC-D25FC3130E25} = {E0B6EA46-7173-43ED-A9FB-01DF0AAB39C6}
 		{E0B6EA46-7173-43ED-A9FB-01DF0AAB39C6} = {31DF00D8-B8D2-4C01-86D0-2E06F35644BE}
+		{4DA3A138-E57E-4EE2-A3C7-E1C2AFE155E2} = {BC1AF5DA-E95B-4F65-8C3D-3A5B01A5443E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {53F05C5F-8BC2-49F7-894A-6831C7B02947}

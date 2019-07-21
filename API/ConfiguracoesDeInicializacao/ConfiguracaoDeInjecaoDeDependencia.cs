@@ -1,5 +1,6 @@
 ﻿using Biblioteca.Aplicacao.Autores;
 using Biblioteca.Aplicacao.Livros;
+using Biblioteca.Aplicacao.Livros.Comando;
 using Biblioteca.Aplicacao.Livros.Consulta;
 using Biblioteca.Infra.AcessoADados.Repositorio;
 using Biblioteca.Infra.Log.AlteracaoDeEntidade;
@@ -22,6 +23,7 @@ namespace Biblioteca.API.ConfiguracoesDeInicializacao
             services.AddScoped<ILivroRepositorio, LivroRepositorio>();
             services.AddScoped<IAutorRepositorio, AutorRepositorio>();
             services.AddScoped<IConsultaDeLivros, ConsultaDeLivros>();
+            services.AddScoped<IControleDeQuantidadeDeLivros, ControleDeQuantidadeDeLivros>();
         }
     }
 }
