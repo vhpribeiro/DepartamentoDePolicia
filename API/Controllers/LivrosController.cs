@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Biblioteca.API.Controllers
 {
     [ApiController]
+    [Authorize("Bearer")]
     [Route("/api/[controller]")]
     public class LivrosController : Controller
     {
@@ -19,7 +20,6 @@ namespace Biblioteca.API.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         //Melhorar a rota, péssima prática do REST
         [Route("{titulo}")]
         public ActionResult ObterLivrosPorTitulo(string titulo)
@@ -30,7 +30,6 @@ namespace Biblioteca.API.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         [Route("")]
         public ActionResult ObterLivrosPorNomeDoAutor(string nomeDoAutor)
         {
@@ -40,7 +39,6 @@ namespace Biblioteca.API.Controllers
         }
 
         [HttpPut]
-        [AllowAnonymous]
         [Route("{idDoLivro}")]
         public ActionResult PegarEmprestado(int idDoLivro, int quantidadeSolicitada)
         {
