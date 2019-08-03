@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Biblioteca.API.Controllers
 {
     [ApiController]
-    [Authorize("Bearer")]
+    [Authorize("Bearer", Roles = "User")]
     [Route("/api/[controller]")]
     public class LivrosController : Controller
     {
@@ -40,6 +40,7 @@ namespace Biblioteca.API.Controllers
 
         [HttpPut]
         [Route("{idDoLivro}")]
+        [Authorize(Roles = "Admin")]
         public ActionResult PegarEmprestado(int idDoLivro, int quantidadeSolicitada)
         {
             _controleDeQuantidadeDeLivros.Emprestar(idDoLivro, quantidadeSolicitada);
