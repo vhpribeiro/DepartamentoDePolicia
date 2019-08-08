@@ -30,6 +30,11 @@ namespace Biblioteca.Infra.AcessoADados.Repositorio
             return Sessao.Get<TEntidade>(id);
         }
 
+        public IEnumerable<TEntidade> ObterPorSpecification(ISpecification<TEntidade> specification)
+        {
+            return Entidades().Where(specification.EhAtendidaPor());
+        }
+
         public virtual IEnumerable<TEntidade> ObterTodos()
         {
             return Entidades();

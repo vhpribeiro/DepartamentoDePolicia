@@ -5,6 +5,6 @@ namespace Biblioteca.Dominio._Comum
 {
     public interface ISpecification<TEntity> where TEntity : class
     {
-        Expression<Func<TEntity, bool>> SatisfiedBy();
+        Expression<Func<TEntity, bool>> EhAtendidaPor();
     }
 }

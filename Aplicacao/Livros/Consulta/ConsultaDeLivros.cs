@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Biblioteca.Aplicacao.Dtos;
+﻿using Biblioteca.Aplicacao.Dtos;
 using Biblioteca.Aplicacao.Mapeadores;
+using Biblioteca.Dominio.Livros.Specifications;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Biblioteca.Aplicacao.Livros.Consulta
 {
@@ -14,17 +15,13 @@ namespace Biblioteca.Aplicacao.Livros.Consulta
             _livroRepositorio = livroRepositorio;
         }
 
-        public IEnumerable<LivroDto> ConsultarPorTitulo(string tituloDoLivro)
+        public IEnumerable<LivroDto> ConsultarPorFiltros(string titulo, string nomeDoAutor)
         {
-            var livros = _livroRepositorio.ObterPorTitulo(tituloDoLivro);
+            var specificationPorTituloDoLivro = new LivroPorTituloSpecification(titulo);
+            var specificationPorNomeDoAutorDoLivro = new LivroPorNomeDoAutorSpecification(nomeDoAutor);
 
-            var livrosDtos = livros.Select(MapeadorDeLivro.Mapear);
-            return livrosDtos;
-        }
-
-        public IEnumerable<LivroDto> ConsultarPorNomeDoAutor(string nomeDoAutor)
-        {
-            var livros = _livroRepositorio.ObterPorNomeDoAutor(nomeDoAutor);
+            var livros =
+                _livroRepositorio.ObterPor(specificationPorTituloDoLivro.E(specificationPorNomeDoAutorDoLivro));
 
             var livrosDtos = livros.Select(MapeadorDeLivro.Mapear);
             return livrosDtos;

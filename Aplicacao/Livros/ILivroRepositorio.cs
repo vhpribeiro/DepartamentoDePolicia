@@ -9,5 +9,6 @@ namespace Biblioteca.Aplicacao.Livros
     {
         IList<Livro> ObterPorTitulo(string titulo);
         IList<Livro> ObterPorNomeDoAutor(string nomeDoAutor);
+        IList<Livro> ObterPor(ISpecification<Livro> specification);
     }
 }

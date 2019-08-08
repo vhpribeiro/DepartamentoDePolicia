@@ -7,7 +7,7 @@ using ExpectedObjects;
 using Nosbor.FluentBuilder.Br;
 using Xunit;
 
-namespace Biblioteca.Testes.Teste_de_Unidade.Dominio
+namespace Biblioteca.Testes.Teste_de_Unidade.Dominio.Autores
 {
     public class AutorTeste
     {

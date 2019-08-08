@@ -2,6 +2,7 @@
 using System.Linq;
 using Biblioteca.Aplicacao.Livros;
 using Biblioteca.Dominio.Livros;
+using Biblioteca.Dominio._Comum;
 using NHibernate;
 
 namespace Biblioteca.Infra.AcessoADados.Repositorio
@@ -18,6 +19,11 @@ namespace Biblioteca.Infra.AcessoADados.Repositorio
         public IList<Livro> ObterPorNomeDoAutor(string nomeDoAutor)
         {
             return Entidades().Where(l => l.Autor.Nome.Contains(nomeDoAutor)).ToList();
+        }
+
+        public IList<Livro> ObterPor(ISpecification<Livro> specification)
+        {
+            return Sessao.Query<Livro>().Where(specification.EhAtendidaPor()).ToList();
         }
     }
 }

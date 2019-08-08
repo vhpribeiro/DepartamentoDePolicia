@@ -4,6 +4,8 @@ using Biblioteca.Aplicacao.Livros.Consulta;
 using Biblioteca.Aplicacao.Mapeadores;
 using Biblioteca.Dominio.Autores;
 using Biblioteca.Dominio.Livros;
+using Biblioteca.Dominio.Livros.Specifications;
+using Biblioteca.Dominio._Comum;
 using ExpectedObjects;
 using Moq;
 using Nosbor.FluentBuilder.Br;
@@ -44,45 +46,29 @@ namespace Biblioteca.Testes.Teste_de_Unidade.Aplicacao.Livros.Consulta
         }
 
         [Fact]
-        public void Deve_obter_os_livros_do_repositorio_por_titulo()
+        public void Deve_obter_todos_os_livros_com_os_filtros_informados()
         {
-            _livroRepositorio.Setup(lr => lr.ObterPorTitulo(_tituloDoLivro)).Returns(_livros);
-
-            _consultaDeLivros.ConsultarPorTitulo(_tituloDoLivro);
-
-            _livroRepositorio.Verify(lr => lr.ObterPorTitulo(_tituloDoLivro));
-        }
-
-        [Fact]
-        public void Deve_consultar_os_livros_pelo_titulo()
-        {
-            _livroRepositorio.Setup(lr => lr.ObterPorTitulo(_tituloDoLivro)).Returns(_livros);
+            _livroRepositorio.Setup(lr => lr.ObterPor(It.IsAny<ISpecification<Livro>>()))
+                .Returns(_livros);
             var livrosEsperados = _livros.Select(MapeadorDeLivro.Mapear);
 
-            var livrosObtidos = _consultaDeLivros.ConsultarPorTitulo(_tituloDoLivro);
+            var livrosObtidos = _consultaDeLivros.ConsultarPorFiltros(_tituloDoLivro, _nomeDoAutor);
 
             livrosEsperados.ToExpectedObject().ShouldMatch(livrosObtidos);
         }
 
         [Fact]
-        public void Deve_obter_os_livros_do_repositorio_por_nome_do_autor()
+        public void Deve_obter_todos_os_livros_por_specification()
         {
-            _livroRepositorio.Setup(lr => lr.ObterPorNomeDoAutor(_nomeDoAutor)).Returns(_livros);
+            var specificationPorTitulo = new LivroPorTituloSpecification(_tituloDoLivro);
+            var specificationPorNomeDoAutor = new LivroPorNomeDoAutorSpecification(_nomeDoAutor);
+            var specificationEsperada = specificationPorTitulo.E(specificationPorNomeDoAutor);
+            _livroRepositorio.Setup(lr => lr.ObterPor(It.IsAny<ISpecification<Livro>>())).Returns(_livros);
 
-            _consultaDeLivros.ConsultarPorNomeDoAutor(_nomeDoAutor);
+            _consultaDeLivros.ConsultarPorFiltros(_tituloDoLivro, _nomeDoAutor);
 
-            _livroRepositorio.Verify(lr => lr.ObterPorNomeDoAutor(_nomeDoAutor));
-        }
-
-        [Fact]
-        public void Deve_obter_todos_os_livros_do_autor_informado()
-        {
-            _livroRepositorio.Setup(lr => lr.ObterPorNomeDoAutor(_nomeDoAutor)).Returns(_livros);
-            var livrosEsperados = _livros.Select(MapeadorDeLivro.Mapear);
-
-            var livrosObtidos = _consultaDeLivros.ConsultarPorNomeDoAutor(_nomeDoAutor);
-
-            livrosEsperados.ToExpectedObject().ShouldMatch(livrosObtidos);
+            _livroRepositorio.Verify(lr => lr.ObterPor(It.Is<ISpecification<Livro>>(s => s.ToExpectedObject()
+                .Matches(specificationEsperada))));
         }
     }
 }

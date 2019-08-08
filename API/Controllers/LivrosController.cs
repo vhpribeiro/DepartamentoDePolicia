@@ -13,27 +13,19 @@ namespace Biblioteca.API.Controllers
         private readonly IConsultaDeLivros _consultaDeLivros;
         private readonly IControleDeQuantidadeDeLivros _controleDeQuantidadeDeLivros;
 
-        public LivrosController(IConsultaDeLivros consultaDeLivros, IControleDeQuantidadeDeLivros controleDeQuantidadeDeLivros)
+        public LivrosController(IConsultaDeLivros consultaDeLivros,
+            IControleDeQuantidadeDeLivros controleDeQuantidadeDeLivros)
         {
             _consultaDeLivros = consultaDeLivros;
             _controleDeQuantidadeDeLivros = controleDeQuantidadeDeLivros;
         }
 
         [HttpGet]
-        //Melhorar a rota, péssima prática do REST
-        [Route("{titulo}")]
-        public ActionResult ObterLivrosPorTitulo(string titulo)
-        {
-            var livros = _consultaDeLivros.ConsultarPorTitulo(titulo);
-
-            return Json(livros);
-        }
-
-        [HttpGet]
         [Route("")]
-        public ActionResult ObterLivrosPorNomeDoAutor(string nomeDoAutor)
+        [AllowAnonymous]
+        public ActionResult ObterLivrosPorFiltros(string titulo = "", string nomeDoAutor = "")
         {
-            var livros = _consultaDeLivros.ConsultarPorNomeDoAutor(nomeDoAutor);
+            var livros = _consultaDeLivros.ConsultarPorFiltros(titulo, nomeDoAutor);
 
             return Json(livros);
         }
