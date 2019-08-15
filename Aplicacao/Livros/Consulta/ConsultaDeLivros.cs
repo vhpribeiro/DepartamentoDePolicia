@@ -1,7 +1,7 @@
 ﻿using Biblioteca.Aplicacao.Dtos;
 using Biblioteca.Aplicacao.Mapeadores;
+using Biblioteca.Dominio._Comum;
 using Biblioteca.Dominio.Livros.Specifications;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Biblioteca.Aplicacao.Livros.Consulta
@@ -15,7 +15,8 @@ namespace Biblioteca.Aplicacao.Livros.Consulta
             _livroRepositorio = livroRepositorio;
         }
 
-        public IEnumerable<LivroDto> ConsultarPorFiltros(string titulo, string nomeDoAutor)
+        public ListaPaginada<LivroDto> ConsultarPorFiltros(string titulo, string nomeDoAutor,
+            int pagina, int quantidadeDeItensPorPagina)
         {
             var specificationPorTituloDoLivro = new LivroPorTituloSpecification(titulo);
             var specificationPorNomeDoAutorDoLivro = new LivroPorNomeDoAutorSpecification(nomeDoAutor);
@@ -24,7 +25,8 @@ namespace Biblioteca.Aplicacao.Livros.Consulta
                 _livroRepositorio.ObterPor(specificationPorTituloDoLivro.E(specificationPorNomeDoAutorDoLivro));
 
             var livrosDtos = livros.Select(MapeadorDeLivro.Mapear);
-            return livrosDtos;
+            var listaPaginada = new ListaPaginada<LivroDto>(livrosDtos, quantidadeDeItensPorPagina, pagina);
+            return listaPaginada;
         }
     }
 }

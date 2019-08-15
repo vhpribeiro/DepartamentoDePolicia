@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using Biblioteca.Aplicacao.Dtos;
+﻿using Biblioteca.Aplicacao.Dtos;
+using Biblioteca.Dominio._Comum;
 
 namespace Biblioteca.Aplicacao.Livros.Consulta
 {
     public interface IConsultaDeLivros
     {
-        IEnumerable<LivroDto> ConsultarPorFiltros(string titulo, string nomeDoAutor);
+        ListaPaginada<LivroDto> ConsultarPorFiltros(string titulo, string nomeDoAutor,
+            int pagina, int quantidadeDeItensPorPagina);
     }
 }

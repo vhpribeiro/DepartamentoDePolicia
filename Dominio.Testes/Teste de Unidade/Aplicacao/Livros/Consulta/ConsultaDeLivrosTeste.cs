@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Biblioteca.Aplicacao.Dtos;
 using Biblioteca.Aplicacao.Livros;
 using Biblioteca.Aplicacao.Livros.Consulta;
 using Biblioteca.Aplicacao.Mapeadores;
@@ -20,11 +21,15 @@ namespace Biblioteca.Testes.Teste_de_Unidade.Aplicacao.Livros.Consulta
         private readonly Mock<ILivroRepositorio> _livroRepositorio;
         private readonly ConsultaDeLivros _consultaDeLivros;
         private readonly string _nomeDoAutor;
+        private readonly int _pagina;
+        private readonly int _quantidadeDeItensPorPagina;
 
         public ConsultaDeLivrosTeste()
         {
             _tituloDoLivro = "Harry Potter";
             _nomeDoAutor = "J. K. Rowling";
+            _pagina = 1;
+            _quantidadeDeItensPorPagina = 20;
             const CategoriaDeLivros categoria = CategoriaDeLivros.Fantasia;
             var autor = FluentBuilder<Autor>.Novo()
                 .Com(a => a.Nome, _nomeDoAutor)
@@ -46,15 +51,18 @@ namespace Biblioteca.Testes.Teste_de_Unidade.Aplicacao.Livros.Consulta
         }
 
         [Fact]
-        public void Deve_obter_todos_os_livros_com_os_filtros_informados()
+        public void Deve_obter_todos_os_livros_paginados_com_os_filtros_informados()
         {
             _livroRepositorio.Setup(lr => lr.ObterPor(It.IsAny<ISpecification<Livro>>()))
                 .Returns(_livros);
             var livrosEsperados = _livros.Select(MapeadorDeLivro.Mapear);
+            var listaDeLivrosPaginadosEsperada = new ListaPaginada<LivroDto>(livrosEsperados,
+                _quantidadeDeItensPorPagina, _pagina);
 
-            var livrosObtidos = _consultaDeLivros.ConsultarPorFiltros(_tituloDoLivro, _nomeDoAutor);
+            var listaDeLivrosPaginadosObtida = _consultaDeLivros.ConsultarPorFiltros(_tituloDoLivro, _nomeDoAutor, 
+                _pagina, _quantidadeDeItensPorPagina);
 
-            livrosEsperados.ToExpectedObject().ShouldMatch(livrosObtidos);
+            listaDeLivrosPaginadosEsperada.ToExpectedObject().ShouldMatch(listaDeLivrosPaginadosObtida);
         }
 
         [Fact]
@@ -65,7 +73,7 @@ namespace Biblioteca.Testes.Teste_de_Unidade.Aplicacao.Livros.Consulta
             var specificationEsperada = specificationPorTitulo.E(specificationPorNomeDoAutor);
             _livroRepositorio.Setup(lr => lr.ObterPor(It.IsAny<ISpecification<Livro>>())).Returns(_livros);
 
-            _consultaDeLivros.ConsultarPorFiltros(_tituloDoLivro, _nomeDoAutor);
+            _consultaDeLivros.ConsultarPorFiltros(_tituloDoLivro, _nomeDoAutor, _pagina, _quantidadeDeItensPorPagina);
 
             _livroRepositorio.Verify(lr => lr.ObterPor(It.Is<ISpecification<Livro>>(s => s.ToExpectedObject()
                 .Matches(specificationEsperada))));

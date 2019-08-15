@@ -23,9 +23,11 @@ namespace Biblioteca.API.Controllers
         [HttpGet]
         [Route("")]
         [AllowAnonymous]
-        public ActionResult ObterLivrosPorFiltros(string titulo = "", string nomeDoAutor = "")
+        public ActionResult ObterLivrosPorFiltros(string titulo = "", string nomeDoAutor = "",
+            int pagina = 1, int quantidadeDeItensPorPagina = 20)
         {
-            var livros = _consultaDeLivros.ConsultarPorFiltros(titulo, nomeDoAutor);
+            var livros = _consultaDeLivros.ConsultarPorFiltros(titulo, nomeDoAutor, pagina,
+                quantidadeDeItensPorPagina);
 
             return Json(livros);
         }
