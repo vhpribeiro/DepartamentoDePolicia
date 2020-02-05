@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <Folder Include="Teste de Unidade\Aplicacao\" />
-    <Folder Include="Teste de Unidade\Dominio\" />
   </ItemGroup>
 
 </Project>
