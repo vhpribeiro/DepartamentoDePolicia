@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace Biblioteca.API.ConfiguracoesDeInicializacao
+namespace DepartamentoDePolicia.API.ConfiguracoesDeInicializacao
 {
     public class ConfiguracaoDoApplicationInsights
     {

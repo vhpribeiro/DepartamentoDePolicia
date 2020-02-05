@@ -1,12 +1,10 @@
-﻿using Biblioteca.Infra.Mapeamento;
+﻿using DepartamentoDePolicia.Infra.Mapeamento;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
-using NHibernate.Cfg;
 using NHibernate.Context;
-using NHibernate.Tool.hbm2ddl;
 
-namespace Biblioteca.Infra.Configuracoes.Orm
+namespace DepartamentoDePolicia.Infra.Configuracoes.Orm
 {
     public class ConfiguracoesNHibernate
     {

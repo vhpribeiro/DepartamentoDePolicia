@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json.Serialization;
 
-namespace Biblioteca.Infra.Configuracoes.Orm
+namespace DepartamentoDePolicia.Infra.Configuracoes.Orm
 {
     public class NHibernateContractResolver : CamelCasePropertyNamesContractResolver
     {

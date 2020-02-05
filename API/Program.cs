@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Biblioteca.API
+namespace DepartamentoDePolicia.API
 {
     public class Program
     {

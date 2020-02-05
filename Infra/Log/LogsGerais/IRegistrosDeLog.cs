@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Biblioteca.Infra.Log.LogsGerais
+namespace DepartamentoDePolicia.Infra.Log.LogsGerais
 {
     public interface IRegistrosDeLog
     {

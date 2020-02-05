@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Biblioteca.Infra.Log.AlteracaoDeEntidade
+namespace DepartamentoDePolicia.Infra.Log.AlteracaoDeEntidade
 {
     public class LogDeAlteracaoDeEntidade
     {

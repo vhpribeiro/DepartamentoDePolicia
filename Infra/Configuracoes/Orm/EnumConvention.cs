@@ -4,7 +4,7 @@ using FluentNHibernate.Conventions.AcceptanceCriteria;
 using FluentNHibernate.Conventions.Inspections;
 using FluentNHibernate.Conventions.Instances;
 
-namespace Biblioteca.Infra.Configuracoes.Orm
+namespace DepartamentoDePolicia.Infra.Configuracoes.Orm
 {
     public class EnumConvention : IUserTypeConvention
     {

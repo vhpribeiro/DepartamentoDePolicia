@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Biblioteca.Dominio._Comum
+namespace DepartamentoDePolicia.Dominio._Comum
 {
     public class ESpecification<T> : Specification<T> where T : class
     {

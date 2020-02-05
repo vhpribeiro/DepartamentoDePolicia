@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using System;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Biblioteca.API.ConfiguracoesDeInicializacao
+namespace DepartamentoDePolicia.API.ConfiguracoesDeInicializacao
 {
     public class ConfiguracaoDeAutenticacao
     {

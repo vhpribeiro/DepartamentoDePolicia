@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Biblioteca.Infra.Log.LogsGerais
+namespace DepartamentoDePolicia.Infra.Log.LogsGerais
 {
     public class RegistroDeLog
     {

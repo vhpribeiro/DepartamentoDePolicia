@@ -1,7 +1,7 @@
-﻿using Biblioteca.Infra.Log.AlteracaoDeEntidade;
+﻿using DepartamentoDePolicia.Infra.Log.AlteracaoDeEntidade;
 using NHibernate;
 
-namespace Biblioteca.Infra.AcessoADados.Repositorio
+namespace DepartamentoDePolicia.Infra.AcessoADados.Repositorio
 {
     public class LogsDeAlteracaoDeEntidade
     {

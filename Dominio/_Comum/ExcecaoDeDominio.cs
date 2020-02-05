@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace Biblioteca.Dominio._Comum
+namespace DepartamentoDePolicia.Dominio._Comum
 {
     public class ExcecaoDeDominio : Exception
     {

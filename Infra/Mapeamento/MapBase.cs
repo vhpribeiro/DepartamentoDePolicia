@@ -1,7 +1,7 @@
-﻿using Biblioteca.Dominio._Comum;
+﻿using DepartamentoDePolicia.Dominio._Comum;
 using FluentNHibernate.Mapping;
 
-namespace Biblioteca.Infra.Mapeamento
+namespace DepartamentoDePolicia.Infra.Mapeamento
 {
     public class MapBase<TEntidade> : ClassMap<TEntidade> where TEntidade : Entidade<TEntidade>
     {

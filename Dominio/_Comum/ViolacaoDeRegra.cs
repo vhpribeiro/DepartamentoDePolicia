@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace Biblioteca.Dominio._Comum
+namespace DepartamentoDePolicia.Dominio._Comum
 {
     public class ViolacaoDeRegra
     {

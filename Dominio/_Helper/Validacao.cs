@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Biblioteca.Dominio._Comum;
+using DepartamentoDePolicia.Dominio._Comum;
 
-namespace Biblioteca.Dominio._Helper
+namespace DepartamentoDePolicia.Dominio._Helper
 {
     internal static class Validador
     {

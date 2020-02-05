@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using NHibernate;
 
-namespace Biblioteca.API.Middlewares
+namespace DepartamentoDePolicia.API.Middlewares
 {
     [AttributeUsage(AttributeTargets.Method)]
     public class UnitOfWorkFilter : ActionFilterAttribute

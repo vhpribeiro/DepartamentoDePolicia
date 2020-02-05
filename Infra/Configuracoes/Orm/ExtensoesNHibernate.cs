@@ -1,4 +1,4 @@
-﻿namespace Biblioteca.Infra.Configuracoes.Orm
+﻿namespace DepartamentoDePolicia.Infra.Configuracoes.Orm
 {
     public class ExtensoesNHibernate
     {

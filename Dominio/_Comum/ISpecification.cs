@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace Biblioteca.Dominio._Comum
+namespace DepartamentoDePolicia.Dominio._Comum
 {
     public interface ISpecification<TEntity> where TEntity : class
     {

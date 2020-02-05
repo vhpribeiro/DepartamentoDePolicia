@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json.Serialization;
 
-namespace Biblioteca.Infra.Log.AlteracaoDeEntidade
+namespace DepartamentoDePolicia.Infra.Log.AlteracaoDeEntidade
 {
     public class LogContractResolver : DefaultContractResolver
     {

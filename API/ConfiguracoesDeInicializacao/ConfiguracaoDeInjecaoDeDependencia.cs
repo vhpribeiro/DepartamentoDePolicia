@@ -1,15 +1,11 @@
-﻿using Biblioteca.Aplicacao.Autores;
-using Biblioteca.Aplicacao.Livros;
-using Biblioteca.Aplicacao.Livros.Comando;
-using Biblioteca.Aplicacao.Livros.Consulta;
-using Biblioteca.Infra.AcessoADados.Repositorio;
-using Biblioteca.Infra.Log.AlteracaoDeEntidade;
-using Biblioteca.Infra.Log.LogsGerais;
+﻿using DepartamentoDePolicia.Infra.AcessoADados.Repositorio;
+using DepartamentoDePolicia.Infra.Log.AlteracaoDeEntidade;
+using DepartamentoDePolicia.Infra.Log.LogsGerais;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NHibernate;
 
-namespace Biblioteca.API.ConfiguracoesDeInicializacao
+namespace DepartamentoDePolicia.API.ConfiguracoesDeInicializacao
 {
     public class ConfiguracaoDeInjecaoDeDependencia
     {
@@ -20,10 +16,6 @@ namespace Biblioteca.API.ConfiguracoesDeInicializacao
             services.AddScoped<LogsDeAlteracaoDeEntidade>();
             services.AddScoped<LogadorDeAlteracaoDeEntidade>();
             services.AddScoped<IInterceptor, LogInterceptor>();
-            services.AddScoped<ILivroRepositorio, LivroRepositorio>();
-            services.AddScoped<IAutorRepositorio, AutorRepositorio>();
-            services.AddScoped<IConsultaDeLivros, ConsultaDeLivros>();
-            services.AddScoped<IControleDeQuantidadeDeLivros, ControleDeQuantidadeDeLivros>();
         }
     }
 }

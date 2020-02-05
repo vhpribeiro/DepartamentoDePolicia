@@ -2,7 +2,7 @@
 using FluentNHibernate;
 using FluentNHibernate.Conventions;
 
-namespace Biblioteca.Infra.Configuracoes.Orm
+namespace DepartamentoDePolicia.Infra.Configuracoes.Orm
 {
     public class CustomForeignKeyConvention : ForeignKeyConvention
     {

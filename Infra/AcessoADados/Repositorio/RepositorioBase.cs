@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Biblioteca.Dominio._Comum;
+using DepartamentoDePolicia.Dominio._Comum;
 using NHibernate;
 using NHibernate.Linq;
 
-namespace Biblioteca.Infra.AcessoADados.Repositorio
+namespace DepartamentoDePolicia.Infra.AcessoADados.Repositorio
 {
     public abstract class RepositorioBase<TEntidade> where TEntidade : Entidade<TEntidade>
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using NHibernate;
 
-namespace Biblioteca.Infra.Log.AlteracaoDeEntidade
+namespace DepartamentoDePolicia.Infra.Log.AlteracaoDeEntidade
 {
     public class LogInterceptor : EmptyInterceptor
     {

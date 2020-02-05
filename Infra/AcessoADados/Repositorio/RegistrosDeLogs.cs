@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
-using Biblioteca.Infra.Log.LogsGerais;
 using Dapper;
+using DepartamentoDePolicia.Infra.Log.LogsGerais;
 using NLog;
 using NLog.Config;
 using NLog.Targets;
 
-namespace Biblioteca.Infra.AcessoADados.Repositorio
+namespace DepartamentoDePolicia.Infra.AcessoADados.Repositorio
 {
     public class RegistrosDeLogs : IRegistrosDeLog
     {

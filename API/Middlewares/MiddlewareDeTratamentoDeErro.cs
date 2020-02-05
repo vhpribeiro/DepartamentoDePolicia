@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
-using Biblioteca.Dominio._Comum;
-using Biblioteca.Infra.Configuracoes.Excecoes;
-using Biblioteca.Infra.Log.LogsGerais;
+using DepartamentoDePolicia.Dominio._Comum;
+using DepartamentoDePolicia.Infra.Configuracoes.Excecoes;
+using DepartamentoDePolicia.Infra.Log.LogsGerais;
 using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Biblioteca.API.Middlewares
+namespace DepartamentoDePolicia.API.Middlewares
 {
     public class MiddlewareDeTratamentoDeErro
     {

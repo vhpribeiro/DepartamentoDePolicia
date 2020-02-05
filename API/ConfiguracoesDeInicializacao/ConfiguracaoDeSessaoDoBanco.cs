@@ -1,10 +1,9 @@
-﻿using Biblioteca.API.Middlewares;
-using Biblioteca.Infra.Configuracoes.Orm;
+﻿using DepartamentoDePolicia.API.Middlewares;
+using DepartamentoDePolicia.Infra.Configuracoes.Orm;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using NHibernate;
 
-namespace Biblioteca.API.ConfiguracoesDeInicializacao
+namespace DepartamentoDePolicia.API.ConfiguracoesDeInicializacao
 {
     public class ConfiguracaoDeSessaoDoBanco
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Biblioteca.Aplicacao._Comum
+namespace DepartamentoDePolicia.Aplicacao._Comum
 {
     public class ExcecaoDeAplicacao : Exception
     {

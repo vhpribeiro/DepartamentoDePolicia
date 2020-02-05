@@ -1,4 +1,4 @@
-﻿namespace Biblioteca.Dominio._Comum
+﻿namespace DepartamentoDePolicia.Dominio._Comum
 {
     public abstract class Entidade<T> where T : Entidade<T>
     {

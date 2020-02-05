@@ -1,8 +1,8 @@
 ﻿using System.Text;
-using Biblioteca.Dominio._Comum;
+using DepartamentoDePolicia.Dominio._Comum;
 using Xunit;
 
-namespace Biblioteca.Testes._Helper
+namespace DepartamentoDePolicia.Testes._Helper
 {
     public static class ExtensoesDeAssert
     {

@@ -1,12 +1,12 @@
-﻿using Biblioteca.API.ConfiguracoesDeInicializacao;
-using Biblioteca.API.Middlewares;
+﻿using DepartamentoDePolicia.API.ConfiguracoesDeInicializacao;
+using DepartamentoDePolicia.API.Middlewares;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Biblioteca.API
+namespace DepartamentoDePolicia.API
 {
     public class Startup
     {
@@ -20,17 +20,17 @@ namespace Biblioteca.API
         public void ConfigureServices(IServiceCollection services)
         {
             ConfiguracaoDoMvc.Configurar(services);
-            ConfiguracaoDeAutenticacao.Configurar(services, Configuration);
-            ConfiguracaoDoApplicationInsights.Configurar(services, Configuration);
+            //ConfiguracaoDeAutenticacao.Configurar(services, Configuration);
+            //ConfiguracaoDoApplicationInsights.Configurar(services, Configuration);
             ConfiguracaoDeInjecaoDeDependencia.Configurar(services, Configuration);
-            ConfiguracaoDeSessaoDoBanco.Configurar(services, Configuration);
+            //ConfiguracaoDeSessaoDoBanco.Configurar(services, Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             TelemetryConfiguration.Active.InstrumentationKey = Configuration["ApplicationInsights"];
             app.UsePathBase(Configuration["RotaBase"]);
-            app.UseAuthentication();
+            //app.UseAuthentication();
             app.UseRequestLocalization();
             app.UseDeveloperExceptionPage();
             app.UseStaticFiles();
