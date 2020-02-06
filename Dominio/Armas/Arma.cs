@@ -34,6 +34,12 @@ namespace DepartamentoDePolicia.Dominio.Armas
 
         public void RecarregarPente(int quantidadeDeBalasRecarregadas)
         {
+            Validacoes<Arma>.Criar()
+                .Quando(quantidadeDeBalasRecarregadas > QuantidadeDeBalasNoPente,
+                    "A quantidade a ser recarregada é maior do que o pente suporta.")
+                .Quando(QuantidadeDeBalasNoPente == QuantidadeDeBalasRestantesNoPente, "O pente já está cheio.")
+                .DispararSeHouverErros();
+
             QuantidadeDeBalasRestantesNoPente = quantidadeDeBalasRecarregadas;
         }
     }

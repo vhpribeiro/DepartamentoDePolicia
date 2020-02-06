@@ -1,6 +1,7 @@
 ﻿using DepartamentoDePolicia.Dominio._Comum;
 using DepartamentoDePolicia.Dominio.Armas;
 using DepartamentoDePolicia.Testes._Helper;
+using DepartamentoDePolicia.Testes._Helper.Builders;
 using ExpectedObjects;
 using Xunit;
 
@@ -99,7 +100,21 @@ namespace DepartamentoDePolicia.Testes.Teste_de_Unidade.Dominio.Armas
         {
             const string mensagemDeErroEsperada = "A quantidade a ser recarregada é maior do que o pente suporta.";
             const int quantidadeDeBalasRecarregadas = 101;
-            var arma = new Arma(_nome, _tipoDaArma, _quantidadeDeBalasNoPente);
+            var arma = ArmaBuilder.UmNovaArma().Criar();
+
+            void Acao() => arma.RecarregarPente(quantidadeDeBalasRecarregadas);
+
+            Assert.Throws<ExcecaoDeDominio<Arma>>(Acao).ComMensagem(mensagemDeErroEsperada);
+        }
+
+        [Fact]
+        public void Nao_deve_recarregar_a_arma_quando_o_pente_ja_estiver_cheio()
+        {
+            const string mensagemDeErroEsperada = "O pente já está cheio.";
+            const int quantidadeDeBalasRecarregadas = 100;
+            var arma = ArmaBuilder.UmNovaArma()
+                .ComQuantidadeDeBalasNoPente(_quantidadeDeBalasNoPente)
+                .ComQuantidadeDeBalasRestantesNoPente(quantidadeDeBalasRecarregadas).Criar();
 
             void Acao() => arma.RecarregarPente(quantidadeDeBalasRecarregadas);
 
