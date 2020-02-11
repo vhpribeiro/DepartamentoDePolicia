@@ -7,13 +7,13 @@ using Xunit;
 
 namespace DepartamentoDePolicia.Testes.Teste_de_Unidade.Dominio.Armas
 {
-    public class ArmasTeste
+    public class ArmaTeste
     {
         private readonly string _nome;
         private readonly int _quantidadeDeBalasNoPente;
         private readonly TiposDeArmas _tipoDaArma;
 
-        public ArmasTeste()
+        public ArmaTeste()
         {
             _tipoDaArma = TiposDeArmas.SMG;
             _nome = "P90";
@@ -85,26 +85,29 @@ namespace DepartamentoDePolicia.Testes.Teste_de_Unidade.Dominio.Armas
         }
 
         [Fact]
-        public void Deve_recarregar_arma()
-        {
-            const int quantidadeDeBalasRecarregadas = 30;
-            var arma = new Arma(_nome, _tipoDaArma, _quantidadeDeBalasNoPente);
-
-            arma.RecarregarPente(quantidadeDeBalasRecarregadas);
-
-            Assert.Equal(quantidadeDeBalasRecarregadas, arma.QuantidadeDeBalasRestantesNoPente);
-        }
-
-        [Fact]
         public void Nao_deve_recarregar_a_arma_com_mais_balas_do_que_o_pente_suporta()
         {
             const string mensagemDeErroEsperada = "A quantidade a ser recarregada é maior do que o pente suporta.";
-            const int quantidadeDeBalasRecarregadas = 101;
-            var arma = ArmaBuilder.UmNovaArma().Criar();
+            const int quantidadeDeBalasRecarregadas = 91;
+            var arma = ArmaBuilder.UmNovaArma()
+                .ComQuantidadeDeBalasRestantesNoPente(10)
+                .Criar();
 
             void Acao() => arma.RecarregarPente(quantidadeDeBalasRecarregadas);
 
             Assert.Throws<ExcecaoDeDominio<Arma>>(Acao).ComMensagem(mensagemDeErroEsperada);
+        }
+
+        [Fact]
+        public void Deve_recarregar_arma()
+        {
+            const int quantidadeDeBalasRecarregadas = 20;
+            var arma = new Arma(_nome, _tipoDaArma, _quantidadeDeBalasNoPente);
+            var quantidadeEsperada = arma.QuantidadeDeBalasRestantesNoPente + quantidadeDeBalasRecarregadas;
+
+            arma.RecarregarPente(quantidadeDeBalasRecarregadas);
+
+            Assert.Equal(quantidadeEsperada, arma.QuantidadeDeBalasRestantesNoPente);
         }
 
         [Fact]

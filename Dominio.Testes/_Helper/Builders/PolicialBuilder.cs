@@ -1,6 +1,5 @@
 ﻿using DepartamentoDePolicia.Dominio.Armas;
 using DepartamentoDePolicia.Dominio.Policiais;
-using DepartamentoDePolicia.Testes.Teste_de_Unidade.Dominio.Policiais;
 
 namespace DepartamentoDePolicia.Testes._Helper.Builders
 {

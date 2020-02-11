@@ -1,6 +1,7 @@
 ﻿using DepartamentoDePolicia.Dominio._Comum;
 using DepartamentoDePolicia.Dominio._Helper;
 using DepartamentoDePolicia.Dominio.Armas;
+using DepartamentoDePolicia.Dominio.Viaturas;
 
 namespace DepartamentoDePolicia.Dominio.Policiais
 {
@@ -13,6 +14,7 @@ namespace DepartamentoDePolicia.Dominio.Policiais
         public Arma Arma { get; protected set; }
         public int Experiencia { get; protected set; }
         public int Nivel { get; protected set; }
+        public Viatura Viatura { get; protected set; }
 
         public Policial(string nome, string numeroDoDistintivo, int idade, int anosNaAcademia, Arma arma)
         {
@@ -42,15 +44,36 @@ namespace DepartamentoDePolicia.Dominio.Policiais
 
         public void FazerRonda()
         {
+            var ehNecessarioRecarregarAArma = Arma.QuantidadeDeBalasNoPente > Arma.QuantidadeDeBalasRestantesNoPente;
+            if(ehNecessarioRecarregarAArma)
+                RecarregarArma();
+
             Experiencia += 15;
             if (Experiencia == 100)
                 SubirDeNivel();
+        }
+
+        private void RecarregarArma()
+        {
+            var quantidadeDeBalasNecessariaParaEncherOPente =
+                Arma.QuantidadeDeBalasNoPente - Arma.QuantidadeDeBalasRestantesNoPente;
+            Arma.RecarregarPente(quantidadeDeBalasNecessariaParaEncherOPente);
         }
 
         private void SubirDeNivel()
         {
             Experiencia = 0;
             Nivel += 1;
+        }
+
+        public void ReceberViatura(Viatura viatura)
+        {
+            Validacoes<Policial>.Criar()
+                .Obrigando(viatura, "É necessário dar uma viatura válida para o policial.")
+                .Quando(Nivel < 3, "Não é possível dar uma viatura para um policial abaixo do nível três.")
+                .DispararSeHouverErros();
+
+            Viatura = viatura;
         }
     }
 }

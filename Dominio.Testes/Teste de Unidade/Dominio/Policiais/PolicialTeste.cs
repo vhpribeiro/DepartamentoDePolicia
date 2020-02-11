@@ -1,6 +1,7 @@
 ﻿using DepartamentoDePolicia.Dominio._Comum;
 using DepartamentoDePolicia.Dominio.Armas;
 using DepartamentoDePolicia.Dominio.Policiais;
+using DepartamentoDePolicia.Dominio.Viaturas;
 using DepartamentoDePolicia.Testes._Helper;
 using DepartamentoDePolicia.Testes._Helper.Builders;
 using ExpectedObjects;
@@ -9,21 +10,35 @@ using Xunit;
 
 namespace DepartamentoDePolicia.Testes.Teste_de_Unidade.Dominio.Policiais
 {
-    public class PoliciaisTeste
+    public class PolicialTeste
     {
         private readonly string _nome;
         private readonly string _numeroDoDistintivo;
         private readonly int _idade;
         private readonly int _anosNaAcademia;
         private readonly Arma _arma;
+        private readonly Policial _policial;
+        private readonly Viatura _viatura;
 
-        public PoliciaisTeste()
+        public PolicialTeste()
         {
             _nome = "Vitor H. P. Ribeiro";
             _numeroDoDistintivo = "10004545";
             _idade = 23;
             _anosNaAcademia = 2;
-            _arma = ArmaBuilder.UmNovaArma().Criar();
+            _arma = ArmaBuilder.UmNovaArma()
+                .ComQuantidadeDeBalasNoPente(50)
+                .ComQuantidadeDeBalasRestantesNoPente(10)
+                .Criar();
+            const int nivel = 5;
+            const int experiencia = 85;
+            _viatura = FluentBuilder<Viatura>.Novo().Criar();
+            _policial = FluentBuilder<Policial>
+                .Novo()
+                .Com(p => p.Experiencia, experiencia)
+                .Com(p => p.Nivel, nivel)
+                .Com(p => p.Arma, _arma)
+                .Criar();
         }
 
         [Fact]
@@ -164,6 +179,7 @@ namespace DepartamentoDePolicia.Testes.Teste_de_Unidade.Dominio.Policiais
             var policial = FluentBuilder<Policial>
                 .Novo()
                 .Com(p => p.Experiencia, experienciaInicial)
+                .Com(p => p.Arma, _arma)
                 .Criar();
 
             policial.FazerRonda();
@@ -182,12 +198,57 @@ namespace DepartamentoDePolicia.Testes.Teste_de_Unidade.Dominio.Policiais
                 .Novo()
                 .Com(p => p.Experiencia, experienciaInicial)
                 .Com(p => p.Nivel, nivelInicial)
+                .Com(p => p.Arma, _arma)
                 .Criar();
 
             policial.FazerRonda();
 
             Assert.Equal(nivelEsperado, policial.Nivel);
             Assert.Equal(experienciaEsperada, policial.Experiencia);
+        }
+
+        [Fact]
+        public void Deve_recarregar_a_arma_enchendo_seu_pente_caso_nao_estiver_cheio_ao_fazer_uma_ronda()
+        {
+            var policial = PolicialBuilder.UmNovoPolicial().ComArma(_arma).Criar();
+
+            policial.FazerRonda();
+
+            Assert.Equal(policial.Arma.QuantidadeDeBalasRestantesNoPente, policial.Arma.QuantidadeDeBalasNoPente);
+        }
+
+        [Fact]
+        public void Deve_dar_uma_viatura_ao_policial()
+        {
+            _policial.ReceberViatura(_viatura);
+
+            Assert.Equal(_viatura, _policial.Viatura);
+        }
+
+        [Fact]
+        public void Nao_deve_dar_uma_viatura_para_um_policial_abaixo_do_nivel_tres()
+        {
+            const string mensagemEsperada = "Não é possível dar uma viatura para um policial abaixo do nível três.";
+            const int nivel = 2;
+            var policial = FluentBuilder<Policial>.Novo()
+                .Com(p => p.Nivel, nivel)
+                .Com(p => p.Arma, _arma)
+                .Criar();
+
+            void Acao() => policial.ReceberViatura(_viatura);
+
+            Assert.Throws<ExcecaoDeDominio<Policial>>(Acao).ComMensagem(mensagemEsperada);
+        }
+
+        [Fact]
+        public void Nao_deve_dar_uma_viatura_invalida()
+        {
+            Viatura viaturaInvalida = null;
+            const string mensagemEsperada = "É necessário dar uma viatura válida para o policial.";
+
+            void Acao() => _policial.ReceberViatura(viaturaInvalida);
+
+            Assert.Throws<ExcecaoDeDominio<Policial>>(Acao).ComMensagem(mensagemEsperada);
         }
     }
 }
