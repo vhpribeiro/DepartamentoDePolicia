@@ -1,5 +1,6 @@
 ﻿using DepartamentoDePolicia.Dominio.Armas;
 using DepartamentoDePolicia.Dominio.Policiais;
+using DepartamentoDePolicia.Dominio.Viaturas;
 
 namespace DepartamentoDePolicia.Testes._Helper.Builders
 {
@@ -10,6 +11,7 @@ namespace DepartamentoDePolicia.Testes._Helper.Builders
         private int _idade;
         private Arma _arma;
         private int _anosDeAcademia;
+        private Viatura _viatura;
 
         public PolicialBuilder()
         {
@@ -55,9 +57,20 @@ namespace DepartamentoDePolicia.Testes._Helper.Builders
             return this;
         }
 
+        public PolicialBuilder ComViatura(Viatura viatura)
+        {
+            _viatura = viatura;
+            return this;
+        }
+
         public Policial Criar()
         {
-            return new Policial(_nome, _numeroDoDistintivo, _idade, _anosDeAcademia, _arma);
+            var policial = new Policial(_nome, _numeroDoDistintivo, _idade, _anosDeAcademia, _arma);
+
+            if(_viatura != null)
+                policial.ReceberViatura(_viatura);
+
+            return policial;
         }
     }
 }

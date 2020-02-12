@@ -48,9 +48,24 @@ namespace DepartamentoDePolicia.Dominio.Policiais
             if(ehNecessarioRecarregarAArma)
                 RecarregarArma();
 
+            var ehNecessarioEncherOTanque =
+                Viatura.QuantidadeMaximaDoTanqueEmLitros > Viatura.QuantidadeDeGasolinaEmLitros;
+            if (Viatura != null && ehNecessarioEncherOTanque)
+                Viatura.EncherOTanque();
+
             Experiencia += 15;
             if (Experiencia == 100)
                 SubirDeNivel();
+        }
+
+        public void ReceberViatura(Viatura viatura)
+        {
+            Validacoes<Policial>.Criar()
+                .Obrigando(viatura, "É necessário dar uma viatura válida para o policial.")
+                .Quando(Nivel < 3, "Não é possível dar uma viatura para um policial abaixo do nível três.")
+                .DispararSeHouverErros();
+
+            Viatura = viatura;
         }
 
         private void RecarregarArma()
@@ -64,16 +79,6 @@ namespace DepartamentoDePolicia.Dominio.Policiais
         {
             Experiencia = 0;
             Nivel += 1;
-        }
-
-        public void ReceberViatura(Viatura viatura)
-        {
-            Validacoes<Policial>.Criar()
-                .Obrigando(viatura, "É necessário dar uma viatura válida para o policial.")
-                .Quando(Nivel < 3, "Não é possível dar uma viatura para um policial abaixo do nível três.")
-                .DispararSeHouverErros();
-
-            Viatura = viatura;
         }
     }
 }

@@ -142,6 +142,40 @@ namespace DepartamentoDePolicia.Testes.Teste_de_Unidade.Dominio.Policiais
         }
 
         [Fact]
+        public void Deve_dar_uma_viatura_ao_policial()
+        {
+            _policial.ReceberViatura(_viatura);
+
+            Assert.Equal(_viatura, _policial.Viatura);
+        }
+
+        [Fact]
+        public void Nao_deve_dar_uma_viatura_invalida()
+        {
+            Viatura viaturaInvalida = null;
+            const string mensagemEsperada = "É necessário dar uma viatura válida para o policial.";
+
+            void Acao() => _policial.ReceberViatura(viaturaInvalida);
+
+            Assert.Throws<ExcecaoDeDominio<Policial>>(Acao).ComMensagem(mensagemEsperada);
+        }
+
+        [Fact]
+        public void Nao_deve_dar_uma_viatura_para_um_policial_abaixo_do_nivel_tres()
+        {
+            const string mensagemEsperada = "Não é possível dar uma viatura para um policial abaixo do nível três.";
+            const int nivel = 2;
+            var policial = FluentBuilder<Policial>.Novo()
+                .Com(p => p.Nivel, nivel)
+                .Com(p => p.Arma, _arma)
+                .Criar();
+
+            void Acao() => policial.ReceberViatura(_viatura);
+
+            Assert.Throws<ExcecaoDeDominio<Policial>>(Acao).ComMensagem(mensagemEsperada);
+        }
+
+        [Fact]
         public void Deve_ganhar_cinco_de_experiencia_ao_limpar_o_patio()
         {
             const int experienciaEsperada = 5;
@@ -180,6 +214,7 @@ namespace DepartamentoDePolicia.Testes.Teste_de_Unidade.Dominio.Policiais
                 .Novo()
                 .Com(p => p.Experiencia, experienciaInicial)
                 .Com(p => p.Arma, _arma)
+                .Com(p => p.Viatura, _viatura)
                 .Criar();
 
             policial.FazerRonda();
@@ -199,6 +234,7 @@ namespace DepartamentoDePolicia.Testes.Teste_de_Unidade.Dominio.Policiais
                 .Com(p => p.Experiencia, experienciaInicial)
                 .Com(p => p.Nivel, nivelInicial)
                 .Com(p => p.Arma, _arma)
+                .Com(p => p.Viatura, _viatura)
                 .Criar();
 
             policial.FazerRonda();
@@ -210,7 +246,11 @@ namespace DepartamentoDePolicia.Testes.Teste_de_Unidade.Dominio.Policiais
         [Fact]
         public void Deve_recarregar_a_arma_enchendo_seu_pente_caso_nao_estiver_cheio_ao_fazer_uma_ronda()
         {
-            var policial = PolicialBuilder.UmNovoPolicial().ComArma(_arma).Criar();
+            var policial = FluentBuilder<Policial>
+                .Novo()
+                .Com(p => p.Arma, _arma)
+                .Com(p => p.Viatura, _viatura)
+                .Criar();
 
             policial.FazerRonda();
 
@@ -218,37 +258,17 @@ namespace DepartamentoDePolicia.Testes.Teste_de_Unidade.Dominio.Policiais
         }
 
         [Fact]
-        public void Deve_dar_uma_viatura_ao_policial()
+        public void Deve_encher_o_tanque_da_viatura_ao_fazer_uma_ronda()
         {
-            _policial.ReceberViatura(_viatura);
-
-            Assert.Equal(_viatura, _policial.Viatura);
-        }
-
-        [Fact]
-        public void Nao_deve_dar_uma_viatura_para_um_policial_abaixo_do_nivel_tres()
-        {
-            const string mensagemEsperada = "Não é possível dar uma viatura para um policial abaixo do nível três.";
-            const int nivel = 2;
-            var policial = FluentBuilder<Policial>.Novo()
-                .Com(p => p.Nivel, nivel)
-                .Com(p => p.Arma, _arma)
+            var viatura = FluentBuilder<Viatura>.Novo()
+                .Com(v => v.QuantidadeMaximaDoTanqueEmLitros, 50)
+                .Com(v => v.QuantidadeDeGasolinaEmLitros, 15)
                 .Criar();
+            _policial.ReceberViatura(viatura);
 
-            void Acao() => policial.ReceberViatura(_viatura);
+            _policial.FazerRonda();
 
-            Assert.Throws<ExcecaoDeDominio<Policial>>(Acao).ComMensagem(mensagemEsperada);
-        }
-
-        [Fact]
-        public void Nao_deve_dar_uma_viatura_invalida()
-        {
-            Viatura viaturaInvalida = null;
-            const string mensagemEsperada = "É necessário dar uma viatura válida para o policial.";
-
-            void Acao() => _policial.ReceberViatura(viaturaInvalida);
-
-            Assert.Throws<ExcecaoDeDominio<Policial>>(Acao).ComMensagem(mensagemEsperada);
+            Assert.Equal(_policial.Viatura.QuantidadeDeGasolinaEmLitros, _policial.Viatura.QuantidadeMaximaDoTanqueEmLitros);
         }
     }
 }
