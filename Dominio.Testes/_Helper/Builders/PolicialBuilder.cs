@@ -1,8 +1,8 @@
-﻿using DepartamentoDePolicia.Dominio.Armas;
-using DepartamentoDePolicia.Dominio.Policiais;
-using DepartamentoDePolicia.Dominio.Viaturas;
+﻿using Departamento.De.Policia.Dominio.Armas;
+using Departamento.De.Policia.Dominio.Policiais;
+using Departamento.De.Policia.Dominio.Viaturas;
 
-namespace DepartamentoDePolicia.Testes._Helper.Builders
+namespace Departamento.De.Policia.Testes._Helper.Builders
 {
     public class PolicialBuilder
     {

@@ -1,9 +1,9 @@
-﻿using DepartamentoDePolicia.Dominio._Comum;
-using DepartamentoDePolicia.Dominio._Helper;
-using DepartamentoDePolicia.Dominio.Armas;
-using DepartamentoDePolicia.Dominio.Viaturas;
+﻿using Departamento.De.Policia.Dominio._Comum;
+using Departamento.De.Policia.Dominio._Helper;
+using Departamento.De.Policia.Dominio.Armas;
+using Departamento.De.Policia.Dominio.Viaturas;
 
-namespace DepartamentoDePolicia.Dominio.Policiais
+namespace Departamento.De.Policia.Dominio.Policiais
 {
     public class Policial : Entidade<Policial>
     {

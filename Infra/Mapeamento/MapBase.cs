@@ -1,7 +1,7 @@
-﻿using DepartamentoDePolicia.Dominio._Comum;
+﻿using Departamento.De.Policia.Dominio._Comum;
 using FluentNHibernate.Mapping;
 
-namespace DepartamentoDePolicia.Infra.Mapeamento
+namespace Departamento.De.Policia.Infra.Mapeamento
 {
     public class MapBase<TEntidade> : ClassMap<TEntidade> where TEntidade : Entidade<TEntidade>
     {

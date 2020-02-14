@@ -1,6 +1,6 @@
-﻿using DepartamentoDePolicia.Dominio.Armas;
+﻿using Departamento.De.Policia.Dominio.Armas;
 
-namespace DepartamentoDePolicia.Testes._Helper.Builders
+namespace Departamento.De.Policia.Testes._Helper.Builders
 {
     public class ArmaBuilder
     {

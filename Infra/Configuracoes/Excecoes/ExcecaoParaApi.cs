@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DepartamentoDePolicia.Infra.Configuracoes.Excecoes
+namespace Departamento.De.Policia.Infra.Configuracoes.Excecoes
 {
     public struct ExcecaoParaApi
     {

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using Departamento.De.Policia.Dominio._Comum;
 using DepartamentoDePolicia.Dominio._Comum;
 
-namespace DepartamentoDePolicia.Aplicacao._Comum
+namespace Departamento.De.Policia.Aplicacao._Comum
 {
     public interface IRepositorioBase<T> where T : Entidade<T>
     {

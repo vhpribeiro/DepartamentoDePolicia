@@ -1,9 +1,9 @@
-﻿using DepartamentoDePolicia.Dominio.Viaturas;
+﻿using Departamento.De.Policia.Dominio.Viaturas;
 using ExpectedObjects;
 using Nosbor.FluentBuilder.Br;
 using Xunit;
 
-namespace DepartamentoDePolicia.Testes.Teste_de_Unidade.Dominio.Viaturas
+namespace Departamento.De.Policia.Testes.Teste_de_Unidade.Dominio.Viaturas
 {
     public class ViaturaTeste
     {

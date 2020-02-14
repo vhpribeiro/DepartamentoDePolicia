@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DepartamentoDePolicia.Aplicacao._Comum
+namespace Departamento.De.Policia.Aplicacao._Comum
 {
     public class ExcecaoDeAplicacao : Exception
     {

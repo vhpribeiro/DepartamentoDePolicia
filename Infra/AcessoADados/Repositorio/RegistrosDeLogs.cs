@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Dapper;
-using DepartamentoDePolicia.Infra.Log.LogsGerais;
+using Departamento.De.Policia.Infra.Log.LogsGerais;
 using NLog;
 using NLog.Config;
 using NLog.Targets;
 
-namespace DepartamentoDePolicia.Infra.AcessoADados.Repositorio
+namespace Departamento.De.Policia.Infra.AcessoADados.Repositorio
 {
     public class RegistrosDeLogs : IRegistrosDeLog
     {

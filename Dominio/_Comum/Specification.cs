@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
+using Departamento.De.Policia.Dominio._Comum;
 
 namespace DepartamentoDePolicia.Dominio._Comum
 {

@@ -1,7 +1,7 @@
-﻿using DepartamentoDePolicia.Infra.Log.AlteracaoDeEntidade;
+﻿using Departamento.De.Policia.Infra.Log.AlteracaoDeEntidade;
 using FluentNHibernate.Mapping;
 
-namespace DepartamentoDePolicia.Infra.Mapeamento
+namespace Departamento.De.Policia.Infra.Mapeamento
 {
     public class LogDeAlteracaoDeEntidadeMap : ClassMap<LogDeAlteracaoDeEntidade>
     {

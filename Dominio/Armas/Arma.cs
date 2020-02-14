@@ -1,8 +1,8 @@
 ﻿using System;
-using DepartamentoDePolicia.Dominio._Comum;
-using DepartamentoDePolicia.Dominio._Helper;
+using Departamento.De.Policia.Dominio._Comum;
+using Departamento.De.Policia.Dominio._Helper;
 
-namespace DepartamentoDePolicia.Dominio.Armas
+namespace Departamento.De.Policia.Dominio.Armas
 {
     public class Arma : Entidade<Arma>
     {

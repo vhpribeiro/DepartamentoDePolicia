@@ -1,11 +1,11 @@
-﻿using DepartamentoDePolicia.Dominio._Comum;
-using DepartamentoDePolicia.Dominio.Armas;
-using DepartamentoDePolicia.Testes._Helper;
-using DepartamentoDePolicia.Testes._Helper.Builders;
+﻿using Departamento.De.Policia.Dominio._Comum;
+using Departamento.De.Policia.Dominio.Armas;
+using Departamento.De.Policia.Testes._Helper;
+using Departamento.De.Policia.Testes._Helper.Builders;
 using ExpectedObjects;
 using Xunit;
 
-namespace DepartamentoDePolicia.Testes.Teste_de_Unidade.Dominio.Armas
+namespace Departamento.De.Policia.Testes.Teste_de_Unidade.Dominio.Armas
 {
     public class ArmaTeste
     {

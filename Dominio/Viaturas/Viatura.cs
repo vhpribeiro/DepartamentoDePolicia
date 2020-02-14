@@ -1,6 +1,6 @@
-﻿using DepartamentoDePolicia.Dominio._Comum;
+﻿using Departamento.De.Policia.Dominio._Comum;
 
-namespace DepartamentoDePolicia.Dominio.Viaturas
+namespace Departamento.De.Policia.Dominio.Viaturas
 {
     public class Viatura : Entidade<Viatura>
     {

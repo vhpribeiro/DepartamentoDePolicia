@@ -1,7 +1,8 @@
-﻿using DepartamentoDePolicia.Infra.Log.AlteracaoDeEntidade;
+﻿using Departamento.De.Policia.Infra.Log.AlteracaoDeEntidade;
+using DepartamentoDePolicia.Infra.Log.AlteracaoDeEntidade;
 using NHibernate;
 
-namespace DepartamentoDePolicia.Infra.AcessoADados.Repositorio
+namespace Departamento.De.Policia.Infra.AcessoADados.Repositorio
 {
     public class LogsDeAlteracaoDeEntidade
     {

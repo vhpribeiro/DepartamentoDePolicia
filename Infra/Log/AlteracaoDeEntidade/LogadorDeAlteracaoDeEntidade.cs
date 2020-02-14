@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DepartamentoDePolicia.Infra.AcessoADados.Repositorio;
+using Departamento.De.Policia.Infra.AcessoADados.Repositorio;
+using DepartamentoDePolicia.Infra.Log.AlteracaoDeEntidade;
 using NHibernate;
 
-namespace DepartamentoDePolicia.Infra.Log.AlteracaoDeEntidade
+namespace Departamento.De.Policia.Infra.Log.AlteracaoDeEntidade
 {
     public class LogadorDeAlteracaoDeEntidade
     {

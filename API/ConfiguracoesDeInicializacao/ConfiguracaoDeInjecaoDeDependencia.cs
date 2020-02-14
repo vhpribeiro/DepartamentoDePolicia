@@ -1,6 +1,7 @@
-﻿using DepartamentoDePolicia.Infra.AcessoADados.Repositorio;
+﻿using Departamento.De.Policia.Infra.AcessoADados.Repositorio;
+using Departamento.De.Policia.Infra.Log.AlteracaoDeEntidade;
+using Departamento.De.Policia.Infra.Log.LogsGerais;
 using DepartamentoDePolicia.Infra.Log.AlteracaoDeEntidade;
-using DepartamentoDePolicia.Infra.Log.LogsGerais;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NHibernate;

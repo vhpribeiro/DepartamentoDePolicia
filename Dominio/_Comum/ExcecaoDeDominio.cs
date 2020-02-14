@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using DepartamentoDePolicia.Dominio._Comum;
 
-namespace DepartamentoDePolicia.Dominio._Comum
+namespace Departamento.De.Policia.Dominio._Comum
 {
     public class ExcecaoDeDominio : Exception
     {

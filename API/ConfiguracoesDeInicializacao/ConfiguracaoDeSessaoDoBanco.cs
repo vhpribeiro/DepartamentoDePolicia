@@ -1,5 +1,5 @@
-﻿using DepartamentoDePolicia.API.Middlewares;
-using DepartamentoDePolicia.Infra.Configuracoes.Orm;
+﻿using Departamento.De.Policia.Infra.Configuracoes.Orm;
+using DepartamentoDePolicia.API.Middlewares;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

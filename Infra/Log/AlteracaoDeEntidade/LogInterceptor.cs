@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Departamento.De.Policia.Infra.Log.AlteracaoDeEntidade;
 using NHibernate;
 
 namespace DepartamentoDePolicia.Infra.Log.AlteracaoDeEntidade

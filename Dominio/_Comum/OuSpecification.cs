@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
+using DepartamentoDePolicia.Dominio._Comum;
 
-namespace DepartamentoDePolicia.Dominio._Comum
+namespace Departamento.De.Policia.Dominio._Comum
 {
     public class OuSpecification<T> : Specification<T> where T : class
     {

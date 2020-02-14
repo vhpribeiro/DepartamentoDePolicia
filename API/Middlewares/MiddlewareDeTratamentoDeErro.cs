@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using Departamento.De.Policia.Dominio._Comum;
+using Departamento.De.Policia.Infra.Configuracoes.Excecoes;
+using Departamento.De.Policia.Infra.Log.LogsGerais;
 using DepartamentoDePolicia.Dominio._Comum;
-using DepartamentoDePolicia.Infra.Configuracoes.Excecoes;
-using DepartamentoDePolicia.Infra.Log.LogsGerais;
 using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;

@@ -1,5 +1,5 @@
-﻿using DepartamentoDePolicia.API.Middlewares;
-using DepartamentoDePolicia.Infra.Configuracoes.Orm;
+﻿using Departamento.De.Policia.Infra.Configuracoes.Orm;
+using DepartamentoDePolicia.API.Middlewares;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;

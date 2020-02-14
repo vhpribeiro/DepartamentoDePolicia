@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DepartamentoDePolicia.Dominio", "Dominio\DepartamentoDePolicia.Dominio.csproj", "{CA8BD294-CA85-4F23-904D-29D77B83F521}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Departamento.De.Policia.Dominio", "Dominio\Departamento.De.Policia.Dominio.csproj", "{CA8BD294-CA85-4F23-904D-29D77B83F521}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DepartamentoDePolicia.Infra", "Infra\DepartamentoDePolicia.Infra.csproj", "{3F499914-05BF-4233-BA40-F28C60495112}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Departamento.De.Policia.Infra", "Infra\Departamento.De.Policia.Infra.csproj", "{3F499914-05BF-4233-BA40-F28C60495112}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DepartamentoDePolicia.API", "API\DepartamentoDePolicia.API.csproj", "{008729BF-E910-40F5-B64E-97D2281C794F}"
 EndProject
@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{31DF00D8-B8D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testes", "Testes", "{5D43C467-27E3-473C-9BF5-8DFEC853EC86}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DepartamentoDePolicia.Testes", "Dominio.Testes\DepartamentoDePolicia.Testes.csproj", "{8A0CE93C-A8D0-48EE-94DF-6689BF76E046}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Departamento.De.Policia.Testes", "Dominio.Testes\Departamento.De.Policia.Testes.csproj", "{8A0CE93C-A8D0-48EE-94DF-6689BF76E046}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dominio", "Dominio", "{6D785CB3-7496-449B-B01B-B4A141A1E81D}"
 EndProject
@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apresentacao", "Apresentaca
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{BC1AF5DA-E95B-4F65-8C3D-3A5B01A5443E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DepartamentoDePolicia.Aplicacao", "Aplicacao\DepartamentoDePolicia.Aplicacao.csproj", "{3F8F629D-F746-4F7F-8CCC-D25FC3130E25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Departamento.De.Policia.Aplicacao", "Aplicacao\Departamento.De.Policia.Aplicacao.csproj", "{3F8F629D-F746-4F7F-8CCC-D25FC3130E25}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aplicacao", "Aplicacao", "{E0B6EA46-7173-43ED-A9FB-01DF0AAB39C6}"
 EndProject

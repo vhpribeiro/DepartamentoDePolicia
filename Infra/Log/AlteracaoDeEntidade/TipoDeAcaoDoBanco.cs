@@ -1,4 +1,4 @@
-﻿namespace DepartamentoDePolicia.Infra.Log.AlteracaoDeEntidade
+﻿namespace Departamento.De.Policia.Infra.Log.AlteracaoDeEntidade
 {
     public enum TipoDeAcaoDoBanco
     {

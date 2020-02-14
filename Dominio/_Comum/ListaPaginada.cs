@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DepartamentoDePolicia.Dominio._Comum
+namespace Departamento.De.Policia.Dominio._Comum
 {
     public class ListaPaginada<TEntity> where TEntity: class
     {

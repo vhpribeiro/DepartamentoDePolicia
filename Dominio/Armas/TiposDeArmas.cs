@@ -1,4 +1,4 @@
-﻿namespace DepartamentoDePolicia.Dominio.Armas
+﻿namespace Departamento.De.Policia.Dominio.Armas
 {
     public enum TiposDeArmas
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DepartamentoDePolicia.Dominio._Helper
+namespace Departamento.De.Policia.Dominio._Helper
 {
     public static class ExtensoesDeDateTime
     {

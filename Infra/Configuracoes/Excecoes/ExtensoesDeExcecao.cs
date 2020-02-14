@@ -1,7 +1,7 @@
 ﻿using System;
-using DepartamentoDePolicia.Dominio._Comum;
+using Departamento.De.Policia.Dominio._Comum;
 
-namespace DepartamentoDePolicia.Infra.Configuracoes.Excecoes
+namespace Departamento.De.Policia.Infra.Configuracoes.Excecoes
 {
     public static class ExtensoesDeExcecao
     {
