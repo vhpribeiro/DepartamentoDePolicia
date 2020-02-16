@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using Departamento.De.Policia.Dominio._Comum;
-using DepartamentoDePolicia.Dominio._Comum;
+﻿using Departamento.De.Policia.Dominio._Comum;
+using System.Collections.Generic;
 
 namespace Departamento.De.Policia.Aplicacao._Comum
 {

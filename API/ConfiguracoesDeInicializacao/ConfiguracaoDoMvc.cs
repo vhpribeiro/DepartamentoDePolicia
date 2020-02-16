@@ -24,8 +24,8 @@ namespace DepartamentoDePolicia.API.ConfiguracoesDeInicializacao
             services
                 .AddMvc(configuracaoDoMvc =>
                 {
-                    var politicaDeAutorizacao = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-                    configuracaoDoMvc.Filters.Add(new AuthorizeFilter(politicaDeAutorizacao));
+                    //var politicaDeAutorizacao = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+                    //configuracaoDoMvc.Filters.Add(new AuthorizeFilter(politicaDeAutorizacao));
                     configuracaoDoMvc.Filters.AddService(typeof(UnitOfWorkFilter));
                 })
                 .AddJsonOptions(options =>

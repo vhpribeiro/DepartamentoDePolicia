@@ -1,4 +1,8 @@
-﻿using Departamento.De.Policia.Infra.AcessoADados.Repositorio;
+﻿using Departamento.De.Policia.Aplicacao;
+using Departamento.De.Policia.Dominio.Armas;
+using Departamento.De.Policia.Dominio.DepartamentosDePolicias;
+using Departamento.De.Policia.Dominio.Policiais;
+using Departamento.De.Policia.Infra.AcessoADados.Repositorio;
 using Departamento.De.Policia.Infra.Log.AlteracaoDeEntidade;
 using Departamento.De.Policia.Infra.Log.LogsGerais;
 using DepartamentoDePolicia.Infra.Log.AlteracaoDeEntidade;
@@ -17,6 +21,10 @@ namespace DepartamentoDePolicia.API.ConfiguracoesDeInicializacao
             services.AddScoped<LogsDeAlteracaoDeEntidade>();
             services.AddScoped<LogadorDeAlteracaoDeEntidade>();
             services.AddScoped<IInterceptor, LogInterceptor>();
+            services.AddScoped<IServicoDeDistribuicaoDePoliciais, ServicoDeDistribuicaoDePoliciais>();
+            services.AddScoped<IDepartamentoDePoliciaisRepositorio, DepartamentosDePoliciaisRepositorio>();
+            services.AddScoped<IPolicialRepositorio, PolicialRepositorio>();
+            services.AddScoped<IArmaRepositorio, ArmaRepositorio>();
         }
     }
 }

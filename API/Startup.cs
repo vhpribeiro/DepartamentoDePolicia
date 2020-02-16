@@ -21,15 +21,14 @@ namespace DepartamentoDePolicia.API
         {
             ConfiguracaoDoMvc.Configurar(services);
             //ConfiguracaoDeAutenticacao.Configurar(services, Configuration);
-            //ConfiguracaoDoApplicationInsights.Configurar(services, Configuration);
             ConfiguracaoDeInjecaoDeDependencia.Configurar(services, Configuration);
-            //ConfiguracaoDeSessaoDoBanco.Configurar(services, Configuration);
+            ConfiguracaoDeSessaoDoBanco.Configurar(services, Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            TelemetryConfiguration.Active.InstrumentationKey = Configuration["ApplicationInsights"];
             app.UsePathBase(Configuration["RotaBase"]);
+            app.UseMvc();
             //app.UseAuthentication();
             app.UseRequestLocalization();
             app.UseDeveloperExceptionPage();
@@ -40,8 +39,6 @@ namespace DepartamentoDePolicia.API
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseMvc();
         }
     }
 }

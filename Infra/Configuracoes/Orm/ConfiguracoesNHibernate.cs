@@ -33,7 +33,7 @@ namespace Departamento.De.Policia.Infra.Configuracoes.Orm
                 .CurrentSessionContext<WebSessionContext>()
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<LogDeAlteracaoDeEntidadeMap>()
                     .Conventions.Add<PrimaryKeyConvention>()
-                    //.Conventions.Add<EnumConvention>()
+                    .Conventions.Add<EnumConvention>()
                     .Conventions.Add<CustomForeignKeyConvention>())
                 //.ExposeConfiguration(config =>
                 //{

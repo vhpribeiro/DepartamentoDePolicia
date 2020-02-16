@@ -7,14 +7,16 @@ namespace Departamento.De.Policia.Dominio.Policiais
 {
     public class Policial : Entidade<Policial>
     {
-        public string Nome { get; protected set; }
-        public string NumeroDoDistintivo { get; protected set; }
-        public int Idade { get; protected set; }
-        public int AnosNaAcademia { get; protected set; }
-        public Arma Arma { get; protected set; }
-        public int Experiencia { get; protected set; }
-        public int Nivel { get; protected set; }
-        public Viatura Viatura { get; protected set; }
+        public virtual string Nome { get; protected set; }
+        public virtual string NumeroDoDistintivo { get; protected set; }
+        public virtual int Idade { get; protected set; }
+        public virtual int AnosNaAcademia { get; protected set; }
+        public virtual Arma Arma { get; protected set; }
+        public virtual int Experiencia { get; protected set; }
+        public virtual int Nivel { get; protected set; }
+        public virtual Viatura Viatura { get; protected set; }
+
+        protected Policial() { }
 
         public Policial(string nome, string numeroDoDistintivo, int idade, int anosNaAcademia, Arma arma)
         {
@@ -35,14 +37,14 @@ namespace Departamento.De.Policia.Dominio.Policiais
             Nivel = 1;
         }
 
-        public void LimparOPatio()
+        public virtual void LimparOPatio()
         {
             Experiencia += 5;
             if (Experiencia == 100)
                 SubirDeNivel();
         }
 
-        public void FazerRonda()
+        public virtual void FazerRonda()
         {
             var ehNecessarioRecarregarAArma = Arma.QuantidadeDeBalasNoPente > Arma.QuantidadeDeBalasRestantesNoPente;
             if(ehNecessarioRecarregarAArma)
@@ -58,7 +60,7 @@ namespace Departamento.De.Policia.Dominio.Policiais
                 SubirDeNivel();
         }
 
-        public void ReceberViatura(Viatura viatura)
+        public virtual void ReceberViatura(Viatura viatura)
         {
             Validacoes<Policial>.Criar()
                 .Obrigando(viatura, "É necessário dar uma viatura válida para o policial.")

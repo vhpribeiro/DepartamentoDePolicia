@@ -1,33 +1,47 @@
-﻿using System.Collections.Generic;
-using Departamento.De.Policia.Dominio._Comum;
+﻿using Departamento.De.Policia.Dominio._Comum;
 using Departamento.De.Policia.Dominio.Policiais;
 using Departamento.De.Policia.Dominio.Viaturas;
+using System.Collections.Generic;
+using Departamento.De.Policia.Dominio._Helper;
 
-namespace Departamento.De.Policia.Dominio.DepartamentosDePolicia
+namespace Departamento.De.Policia.Dominio.DepartamentosDePolicias
 {
-    public class DepartamentoDePoliciais : Entidade<DepartamentoDePoliciais>
+    public class 
+        DepartamentoDePoliciais : Entidade<DepartamentoDePoliciais>
     {
-        private static IList<Policial> _policiais = new List<Policial>();
-        public IEnumerable<Policial> Policiais = _policiais;
-        private static IList<Viatura> _viaturas = new List<Viatura>();
-        public IEnumerable<Viatura> Viaturas = _viaturas;
-        public int AnoDeCriacao { get; protected set; }
-        public int NumeroDeRegistro { get; protected set; }
+        private readonly IList<Policial> _policiais = new List<Policial>();
+        public virtual IEnumerable<Policial> Policiais => _policiais;
+        private readonly IList<Viatura> _viaturas = new List<Viatura>();
+        public virtual IEnumerable<Viatura> Viaturas => _viaturas;
+        public virtual int AnoDeCriacao { get; protected set; }
+        public virtual int NumeroDeRegistro { get; protected set; }
+
+        protected DepartamentoDePoliciais() { }
 
         public DepartamentoDePoliciais(int anoDeCriacao, int numeroDeRegistro)
         {
+            ValidarDados(anoDeCriacao, numeroDeRegistro);
+
             AnoDeCriacao = anoDeCriacao;
             NumeroDeRegistro = numeroDeRegistro;
         }
 
-        public void ContratarPolicial(Policial policial)
+        public virtual void ContratarPolicial(Policial policial)
         {
             _policiais.Add(policial);
         }
 
-        public void ComprarNovaViatura(Viatura viatura)
+        public virtual void ComprarNovaViatura(Viatura viatura)
         {
             _viaturas.Add(viatura);
+        }
+
+        private static void ValidarDados(int anoDeCriacao, int numeroDeRegistro)
+        {
+            Validacoes<DepartamentoDePoliciais>.Criar()
+                .Quando(anoDeCriacao < 1960, "É necessário informar um ano válido de criação do departamento.")
+                .Quando(numeroDeRegistro <= 0, "É necessário informar um número de registro válido para o departamento.")
+                .DispararSeHouverErros();
         }
     }
 }

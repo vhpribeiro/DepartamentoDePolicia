@@ -6,10 +6,12 @@ namespace Departamento.De.Policia.Dominio.Armas
 {
     public class Arma : Entidade<Arma>
     {
-        public string Nome { get; protected set; }
-        public TiposDeArmas Tipo { get; protected set; }
-        public int QuantidadeDeBalasNoPente { get; protected set; }
-        public int QuantidadeDeBalasRestantesNoPente { get; protected set; }
+        public virtual string Nome { get; protected set; }
+        public virtual TiposDeArmas Tipo { get; protected set; }
+        public virtual int QuantidadeDeBalasNoPente { get; protected set; }
+        public virtual int QuantidadeDeBalasRestantesNoPente { get; protected set; }
+
+        protected Arma() { }
 
         public Arma(string nomeDaArma, TiposDeArmas tipo, int quantidadeDeBalasNoPente)
         {
@@ -32,7 +34,7 @@ namespace Departamento.De.Policia.Dominio.Armas
                 .DispararSeHouverErros();
         }
 
-        public void RecarregarPente(int quantidadeDeBalasRecarregadas)
+        public virtual void RecarregarPente(int quantidadeDeBalasRecarregadas)
         {
             Validacoes<Arma>.Criar()
                 .Quando(quantidadeDeBalasRecarregadas + QuantidadeDeBalasRestantesNoPente > QuantidadeDeBalasNoPente,
