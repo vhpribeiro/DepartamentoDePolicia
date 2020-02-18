@@ -37,7 +37,7 @@ namespace Departamento.De.Policia.Dominio.DepartamentosDePolicias
             _viaturas.Add(viatura);
         }
 
-        public virtual void DisparouAlarmeHandler(object origm, EventArgs argumentos)
+        public virtual void DisparouAlarmeHandler(object origem, EventArgs argumentos)
         {
             foreach (var policial in Policiais) 
                 policial.FazerRonda();
