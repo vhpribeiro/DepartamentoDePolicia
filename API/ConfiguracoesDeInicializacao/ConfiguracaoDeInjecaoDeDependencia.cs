@@ -25,6 +25,7 @@ namespace DepartamentoDePolicia.API.ConfiguracoesDeInicializacao
             services.AddScoped<IDepartamentoDePoliciaisRepositorio, DepartamentosDePoliciaisRepositorio>();
             services.AddScoped<IPolicialRepositorio, PolicialRepositorio>();
             services.AddScoped<IArmaRepositorio, ArmaRepositorio>();
+            services.AddScoped<ICentralDeEmergencias, CentralDeEmergencias>();
         }
     }
 }

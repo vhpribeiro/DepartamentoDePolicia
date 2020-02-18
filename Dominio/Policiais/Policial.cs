@@ -51,7 +51,7 @@ namespace Departamento.De.Policia.Dominio.Policiais
                 RecarregarArma();
 
             var ehNecessarioEncherOTanque =
-                Viatura.QuantidadeMaximaDoTanqueEmLitros > Viatura.QuantidadeDeGasolinaEmLitros;
+                Viatura?.QuantidadeMaximaDoTanqueEmLitros > Viatura?.QuantidadeDeGasolinaEmLitros;
             if (Viatura != null && ehNecessarioEncherOTanque)
                 Viatura.EncherOTanque();
 

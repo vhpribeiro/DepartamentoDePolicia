@@ -1,4 +1,5 @@
-﻿using Departamento.De.Policia.Dominio._Comum;
+﻿using System;
+using Departamento.De.Policia.Dominio._Comum;
 using Departamento.De.Policia.Dominio.Policiais;
 using Departamento.De.Policia.Dominio.Viaturas;
 using System.Collections.Generic;
@@ -34,6 +35,12 @@ namespace Departamento.De.Policia.Dominio.DepartamentosDePolicias
         public virtual void ComprarNovaViatura(Viatura viatura)
         {
             _viaturas.Add(viatura);
+        }
+
+        public virtual void DisparouAlarmeHandler(object origm, EventArgs argumentos)
+        {
+            foreach (var policial in Policiais) 
+                policial.FazerRonda();
         }
 
         private static void ValidarDados(int anoDeCriacao, int numeroDeRegistro)

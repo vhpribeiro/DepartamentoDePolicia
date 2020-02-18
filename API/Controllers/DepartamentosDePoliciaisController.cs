@@ -11,10 +11,13 @@ namespace DepartamentoDePolicia.API.Controllers
     public class DepartamentosDePoliciaisController : Controller
     {
         private readonly IServicoDeDistribuicaoDePoliciais _servicoDeDistribuicaoDePoliciais;
+        private ICentralDeEmergencias _centralDeEmergencias;
 
-        public DepartamentosDePoliciaisController(IServicoDeDistribuicaoDePoliciais servicoDeDistribuicaoDePoliciais)
+        public DepartamentosDePoliciaisController(IServicoDeDistribuicaoDePoliciais servicoDeDistribuicaoDePoliciais,
+            ICentralDeEmergencias centralDeEmergencias)
         {
             _servicoDeDistribuicaoDePoliciais = servicoDeDistribuicaoDePoliciais;
+            _centralDeEmergencias = centralDeEmergencias;
         }
 
         [HttpPost]
@@ -29,6 +32,14 @@ namespace DepartamentoDePolicia.API.Controllers
                 new Policial("Vitor Hugo P. Ribeiro", "100023156", 23, 0, arma)
             };
             _servicoDeDistribuicaoDePoliciais.EncaminharPoliciasParaDepartamento(numeroDoDepartamento, policiais);
+        }
+
+        [HttpPost]
+        [Route("alarme/{numeroDeRegistroDoDP}")]
+        [AllowAnonymous]
+        public void DispararAlarme(int numeroDeRegistroDoDP)
+        {
+            _centralDeEmergencias.AcionarAlarme(numeroDeRegistroDoDP);
         }
     }
 }
