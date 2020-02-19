@@ -1,4 +1,5 @@
-﻿using Departamento.De.Policia.Dominio.DepartamentosDePolicias;
+﻿using Departamento.De.Policia.Aplicacao._Comum;
+using Departamento.De.Policia.Dominio.DepartamentosDePolicias;
 
 namespace Departamento.De.Policia.Aplicacao
 {
@@ -17,9 +18,12 @@ namespace Departamento.De.Policia.Aplicacao
             var departamento =
                 _departamentoDePoliciasRepositorio.ObterDepartamentoDePoliciaPorNumeroDeRegistro(numeroDeRegistro); //Subscriber
 
+            if(departamento == null)
+                throw new ExcecaoDeAplicacao("Não foi encontrado nenhum departamento com o número informado.");
+
             gerenciadorDeAlarme.DisparouAlarme += departamento.DisparouAlarmeHandler;
 
-            gerenciadorDeAlarme.LigarAlarme();
+            gerenciadorDeAlarme.AcionarAlarme();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Departamento.De.Policia.Aplicacao
 
         public event DisparouAlarmeHandler DisparouAlarme;
 
-        public void LigarAlarme()
+        public void AcionarAlarme()
         {
             NoDisparoDoAlarme();
         }
