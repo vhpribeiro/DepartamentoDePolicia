@@ -4,7 +4,7 @@ namespace Departamento.De.Policia.Aplicacao
 {
     public class GerenciadorDeAlarme
     {
-        public delegate void DisparouAlarmeHandler(object origm, EventArgs argumentos);
+        public delegate void DisparouAlarmeHandler(object origem, EventArgs argumentos);
 
         public event DisparouAlarmeHandler DisparouAlarme;
 
