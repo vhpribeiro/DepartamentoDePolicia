@@ -5,23 +5,23 @@ namespace Departamento.De.Policia.Aplicacao
 {
     public class CentralDeEmergencias : ICentralDeEmergencias
     {
-        private readonly IDepartamentoDePoliciaisRepositorio _departamentoDePoliciasRepositorio;
+        private readonly IDepartamentoDePoliciaisRepositorio _departamentoDePoliciaisRepositorio;
 
         public CentralDeEmergencias(IDepartamentoDePoliciaisRepositorio departamentoDePoliciaisRepositorio)
         {
-            _departamentoDePoliciasRepositorio = departamentoDePoliciaisRepositorio;
+            _departamentoDePoliciaisRepositorio = departamentoDePoliciaisRepositorio;
         }
 
         public void AcionarAlarme(int numeroDeRegistro)
         {
-            var gerenciadorDeAlarme = new GerenciadorDeAlarme(); //Publisher
+            var gerenciadorDeAlarme = new GerenciadorDeAlarme(); //Subject
             var departamento =
-                _departamentoDePoliciasRepositorio.ObterDepartamentoDePoliciaPorNumeroDeRegistro(numeroDeRegistro); //Subscriber
+                _departamentoDePoliciaisRepositorio.ObterDepartamentoDePoliciaPorNumeroDeRegistro(numeroDeRegistro); //Observer
 
             if(departamento == null)
                 throw new ExcecaoDeAplicacao("Não foi encontrado nenhum departamento com o número informado.");
 
-            gerenciadorDeAlarme.DisparouAlarme += departamento.DisparouAlarmeHandler;
+            gerenciadorDeAlarme.DisparouAlarme += departamento.DisparouAlarmeHandler; //Subscrição
 
             gerenciadorDeAlarme.AcionarAlarme();
         }
